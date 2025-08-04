@@ -1,57 +1,32 @@
 
 
 def countApplesAndOranges(s, t, a, b, apples, oranges):
-    # Write your code here        
-    drop_range = list(range(s, t+1))
-    print("--")
+    # Write your code here            
     apples = list(map(lambda x: x+a, (apples)))
     oranges = list(map(lambda x: x+b,(oranges)))
-    apples.sort()
-    oranges.sort()
-    print("00")
-
-    print(len(apples))
-    print(len(set(apples)))
-
-    # print(list(map(lambda x: x in drop_range, apples)).count(True))
-    # print(list(map(lambda x: x in drop_range, oranges)).count(True))
-    print("01")
-
-    ap = 0   
-
     
-    # x = filter(lambda x: x in apples, drop_range)
-    # y = filter(lambda x: x in oranges, drop_range)
     apple_dict = dict()    
 
-    for i in drop_range:
+    for i in range(s, t+1):
         apple_dict[i] = apple_dict.setdefault(i, 0)
 
-    # print(apple_dict)
+    orange_dict = apple_dict.copy()
+    
     for i in apples:
-        apple_dict[i] = apple_dict.setdefault(i, 0) + 1
-    
-    print(len(list(filter(lambda x: x!=0, apple_dict.values()))))
-    
-    print("02")
+        try:
+            apple_dict[i] = apple_dict.get(i) + 1
+        except:
+            continue
 
     
-    # for i in x:        
-    #     print(i)
-    print(ap)    
-
-
-    # ap = []
-    # op = []
-    # for i in drop_range:
-    #     print(i)
-    #     if i in apples:
-    #         ap.append(i)
-    #     if i in oranges:
-    #         op.append(i)
-    #
-    # print(len(ap))
-    # print(len(op))
+    for i in oranges:
+        try:
+            orange_dict[i] = orange_dict.get(i) + 1
+        except:
+            continue
+    
+    print(sum(apple_dict.values()))
+    print(sum(orange_dict.values()))
 
     
 
