@@ -8,13 +8,15 @@ def funnyString(s):
         if abdiff == 0:
             continue
         rev_s.append(abdiff)
+    print(rev_s)
     if (rev_s == rev_s[::-1]):
-        return "Funny"
+        return ("Funny")        
     return "Not Funny"
 
 
 if __name__ == '__main__':
     funnyString("acxz")
     funnyString("bcxz")
-    funnyString("lmnop")
+    funnyString("lmnop")    
+    print(funnyString("ivvkx")    )
     
