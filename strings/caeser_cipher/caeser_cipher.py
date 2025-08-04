@@ -1,19 +1,7 @@
-
-
-
-
-
-def caesarCipher(s, k):
-    # Write your code here
-    print(s)
-    counter = 1
-    while k > 26:
-        counter+=1
-        k -= 26
-    print(counter)
+def caesarCipher(s, k):    
     cipher = list(map(ord, s))    
-    x_list =[]
-    for i in cipher:            
+    f_cipher =[]
+    for i in cipher:
         if (i >= 65 and i <=90) or (i >= 97 and i <= 122):
             if chr(i).isupper():
                 i +=10
@@ -23,12 +11,9 @@ def caesarCipher(s, k):
                 i+=10
                 if not (i >= 97 and i <= 122):
                     i-=26
-            print(chr(i))
-        
-        x_list.append(i)
-    out = ("".join((map(chr, x_list))))
-    print(out)
-    # return out
+        f_cipher.append(i)
+    out = ("".join((map(chr, f_cipher))))    
+    return out
 
 if __name__ == '__main__':    
 
