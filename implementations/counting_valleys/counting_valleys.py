@@ -1,4 +1,4 @@
-def countingValleys(steps, path):    
+def countingValleys(path):    
     sea_level = 0
     valley = 0
     for i in path:
@@ -11,6 +11,6 @@ def countingValleys(steps, path):
     return valley
 
 if __name__ == '__main__':      
-    result = countingValleys(8, "UDDDUDUU")
-    result = countingValleys(8, "DUUUDUDD")
-    result = countingValleys(8, "UDUUUDUDDD")
+    result = countingValleys("UDDDUDUU")
+    result = countingValleys("DUUUDUDD")
+    result = countingValleys("UDUUUDUDDD")
