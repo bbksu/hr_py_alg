@@ -1,26 +1,26 @@
-from itertools import combinations
-def pickingNumbers(a):    
-    combs = list(combinations(a, 2))
-    comb_dict = dict()    
-    for i, x in combs:
-        if abs(i -x) == 1:                        
-            comb_dict[x, i] = comb_dict.setdefault((x, i),0)+1
-    rep = max(comb_dict.values())
-    common = []
-    for i, x in comb_dict.items():
-        if x == rep:
-            common = list(i)
-            break
-    final = 0
-    for i in common:
-        final += a.count(i)    
-    return (final)
-    
-
+def pickingNumbers(a):
+    set_a = sorted(set(a))
+    adj_a = [set_a[i:i+2] for i in range(0,len(set_a)-1)]
+    count = 0
+    single_count = 0
+    for i, x in adj_a:
+        p1, p2 =a.count(i), a.count(x)
+        if abs(i-x) <=1:
+            size = p1 + p2
+            if size >= count:
+                count = size
+        single_count = max(count, single_count, p1, p2)
+    if len(set_a) == 1:
+        count = a.count(set_a[0])
+    count = max(count, single_count)
+    return(count)
 
 
 if __name__ == '__main__':    
 
     result = pickingNumbers([4,6,5,3,3,1])
-    result = pickingNumbers([1, 1, 2,2,4,4,5,5,5])
-    result = pickingNumbers([1,2,2,3,1,2])
+    result = pickingNumbers([1,1, 2,2,4,4,5,5,5])
+    result = pickingNumbers([1,2,2,3,1,2])    
+    result = pickingNumbers([66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66,66])
+    result = pickingNumbers([4,2,3,4,4,9,98,98,3,3,3,4,2,98,1,98,98,1,1,4,98,2,98,3,9,9,3,1,4,1,98,9,9,2,9,4,2,2,9,98,4,98,1,3,4,9,1,98,98,4,2,3,98,98,1,99,9,98,98,3,98,98,4,98,2,98,4,2,1,1,9,2,4])
+    result = pickingNumbers([4,97,5,97,97,4,97,4,97,97,97,97,4,4,5,5,97,5,97,99,4,97,5,97,97,97,5,5,97,4,5,97,97,5,97,4,97,5,4,4,97,5,5,5,4,97,97,4,97,5,4,4,97,97,97,5,5,97,4,97,97,5,4,97,97,4,97,97,97,5,4,4,97,4,4,97,5,97,97,97,97,4,97,5,97,5,4,97,4,5,97,97,5,97,5,97,5,97,97,97])
